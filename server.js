@@ -1,12 +1,17 @@
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const { processData } = require('./utils/helpers');
 const { validateFile } = require('./utils/fileUtils');
 require('dotenv').config();
 
+
+
+
 const app = express();
 app.use(bodyParser.json({ limit: '10mb' })); // for base64 files
 
+app.use(cors());
 const PORT = process.env.PORT || 3000;
 
 app.get('/bfhl', (req, res) => {
